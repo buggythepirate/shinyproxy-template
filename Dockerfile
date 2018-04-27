@@ -32,4 +32,4 @@ COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R","-e" "shiny::runApp('/root/euler',port=3838, host='0.0.0.0')"]
+CMD ["R","-e", "shiny::runApp('/root/euler',port=3838, host='0.0.0.0')"]
