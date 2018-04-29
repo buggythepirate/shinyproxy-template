@@ -25,8 +25,9 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown', 'devtools', 'shinydashboard')
 RUN R -e "install.packages('Rmpfr', repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
-RUN mkdir /root/euler
-COPY euler /root/euler
+RUN mkdir /opt/euler
+COPY euler /opt/euler
+USER nobody
 
 COPY Rprofile.site /usr/lib/R/etc/
 
