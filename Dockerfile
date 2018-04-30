@@ -25,11 +25,12 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown', 'devtools', 'shinydashboard')
 RUN R -e "install.packages('Rmpfr', repos='https://cloud.r-project.org/')"
 
 # copy the app to the image
-RUN mkdir /root/euler
-COPY euler /root/euler
+RUN mkdir /opt/euler
+COPY euler /opt/euler
+USER nobody
 
 COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/root/euler',port=3838, host='0.0.0.0')"]
+CMD ["R", "-e", "shiny::runApp('/opt/euler',port=3838, host='0.0.0.0')"]
